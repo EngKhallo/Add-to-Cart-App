@@ -5,26 +5,14 @@ import 'package:get/get.dart';
 class cart extends StatelessWidget {
   cart({super.key});
 
-  void addCart(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) {
-          return Cart(image: 'Images', name: 'Hello', price: null,);
-        },
-      ),
-    );
-  }
-
   RxList carts = [].obs;
 
   List items = [
     {'image': 'assets/banana.jpg', 'name': 'banana', 'price': 0.5},
-    {'image': 'assets/apple.webp', 'name': 'apple', 'price': 0.5},
-    {'image': 'assets/mango.png', 'name': 'mango', 'price': 0.5},
-    {'image': 'assets/orange.jpg', 'name': 'orange', 'price': 0.5},
+    {'image': 'assets/apple.webp', 'name': 'apple', 'price': 0.2},
+    {'image': 'assets/mango.png', 'name': 'mango', 'price': 0.7},
+    {'image': 'assets/orange.jpg', 'name': 'orange', 'price': 1.0},
   ];
-
-TextEditingController name = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +22,12 @@ TextEditingController name = TextEditingController();
           title: Text('Shopping Cart'),
           actions: [
             IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: ()=> addCart(context),
-            ),
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (ctx) => Cart(carts)),
+                  );
+                }),
             Obx(
               () => Text(
                 carts.length.toString(),
