@@ -25,7 +25,7 @@ class Cart extends StatelessWidget {
                   bottom: BorderSide(width: 0.5, color: Colors.grey[400]!),
                 ),
               ),
-              height: 80,
+              height: 90,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 2.0, vertical: 10),
@@ -46,14 +46,6 @@ class Cart extends StatelessWidget {
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(Icons.remove_circle),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.add_circle),
-                      onPressed: () {},
-                    ),
                     SizedBox(width: 10),
                     Text(
                       currentCart['price'].toString(),
@@ -64,7 +56,7 @@ class Cart extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     IconButton(
-                      icon: Icon(Icons.cancel),
+                      icon: Icon(Icons.delete, color: Colors.orange),
                       onPressed: () {
                         carts.remove(currentCart);
                       },
